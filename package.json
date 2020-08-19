@@ -1,0 +1,31 @@
+{
+  "name": "gulp-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "gulp serve",
+    "build": "gulp build:prod"
+  },
+  "author": "vservin",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.12",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-inject": "^5.0.5",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "node-sass": "^4.14.1",
+    "typescript": "^3.9.7",
+    "webpack-stream": "^5.2.1"
+  },
+  "dependencies": {
+    "bulma": "^0.9.0",
+    "rxjs": "^6.6.2"
+  }
+}
