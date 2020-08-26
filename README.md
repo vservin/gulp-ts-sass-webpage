@@ -411,4 +411,4 @@ exports.default = serveTask;
 ## Live example
 
 Finally, we are good to go! I'm attaching a source code, and the generated output code with npm libraries examples
-generating a fully functional [**Frameworkless Gulp - TS - Sass Website**](dist/index.html)!
+generating a fully functional [**Frameworkless Gulp - TS - Sass Website**](https://vservin.github.io/gulp-ts-sass-webpage/)!

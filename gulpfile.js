@@ -12,6 +12,7 @@ const fs = require('fs');
 const imagemin = require('gulp-imagemin');
 const inject = require('gulp-inject');
 const webpack = require('webpack-stream');
+const ghPages = require('gulp-gh-pages');
 
 const cleanTask = () => del(['dist']);
 
@@ -97,6 +98,7 @@ const htmlBuildTask = gulp.series(
 
 const buildTask = gulp.series(cleanTask, sassBuildTask, jsBuildTask, htmlBuildTask, imageTask);
 const buildProdTask = gulp.series(cleanTask, sassBuildProdTask, jsBuildProdTask, htmlBuildTask, imageTask);
+const deployTask = () => gulp.src('./dist/**/*').pipe(ghPages());
 
 const serveTask = gulp.series(buildTask, () => {
 	browserSync.init({
@@ -117,6 +119,7 @@ exports.js = jsBuildTask;
 exports.html = htmlBuildTask;
 exports['build'] = buildTask;
 exports['build:prod'] = buildProdTask;
+exports.deploy = deployTask;
 exports.serve = serveTask;
 exports.default = serveTask;
 
