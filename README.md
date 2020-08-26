@@ -65,6 +65,46 @@ For more complete info visit **[SASS](https://sass-lang.com/)**
 
 ### TypeScript
 
+Before getting into TS, let's talk a little about EcmaScript. In a few words, ES is the standard which provides the rules,
+details, and guidelines for JS. There has been updates for ES and to this date, ES5 or ES 2009 is the one working with
+most modern browsers however most people prefer using practices within ES6 or ES 2015 or most recent versions, because it changed
+JS with major new features such as classes, arrow functions.
+TypeScript is a superset of all ES standards and JavaScript, this means that has more functionalities and features included
+into it, called type system. JS provides primitive language types like string, number, and object. It never cares if you
+use a single variable for all your types and logic. Typescript does. This means that your existing working JavaScript code
+is also TypeScript code. The main benefit of TypeScript is that it can highlight unexpected behavior in your code,
+lowering the chance of bugs, making scaling much easier.\
+It is important to highlight that **the browser does not understand TS**, **it needs to compile to JS**.
+
+Let's make a quick example of some funny business JS lets you do.
+
+```javascript
+  console.log(new Array() == false) // outputs true
+  console.log([] == false) // outputs true
+  console.log('' == false) // outputs true
+  var a = 2;
+  a = 'hello';
+  a = false;
+  a = { color: 'red' };
+  a = new Array();
+```
+
+vs the TS output.
+
+```typescript
+  console.log(new Array() == false) // error, does not compile, outputs: "the types have no overlap"
+  console.log([] == false) // v: "the types have no overlap"
+  console.log('' == false) // v: "the types have no overlap"
+  var a = 2; // warning 'var' depecated, use instead of 'let' or 'const' 
+  a = 'hello'; // error, outputs: "Type '"hello"' is not assignable to type 'number'."
+  a = false; // error, outputs: "Type 'false' is not assignable to type 'number'."
+  a = { color: 'red' }; // error, outputs: "Type '{ color: string; }' is not assignable to type 'number'."
+  a = new Array(); // error, outputs: "Type 'any[]' is not assignable to type 'number'."
+```
+
+In summary:
+![TypeScript](https://www.filepicker.io/api/file/19uUx4kDS7ecP6YDadXg)
+
 For more complete info visit **[TypeScript](https://www.typescriptlang.org/)**
 
 ### Gulp
