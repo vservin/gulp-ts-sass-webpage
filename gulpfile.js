@@ -25,86 +25,75 @@ const sassRenameTask = async (callback) => {
 	return callback();
 };
 
-const sassBuildTask = gulp.series(() => {
-	del(['dist/css'])
-	return gulp.src('src/**/*.scss')
+const sassBuildTask = gulp.series(
+	() => del(['dist/css']),
+	() => gulp.src('src/**/*.scss')
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer({ overrideBrowserslist: ['last 2 versions'], cascade: false}))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('dist'))
-		.pipe(browserSync.stream())
-	;
-}, sassRenameTask);
+		.pipe(browserSync.stream()),
+	sassRenameTask
+);
 
-const sassBuildProdTask = gulp.series(() => {
-	del(['dist/css'])
-	return gulp.src('src/**/*.scss')
+const sassBuildProdTask = gulp.series(
+	() => del(['dist/css']),
+	() => gulp.src('src/**/*.scss')
 		.pipe(plumber())
 		.pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
 		.pipe(autoprefixer({ overrideBrowserslist: ['last 2 versions'], cascade: false}))
-		.pipe(gulp.dest('dist'))
-	;
-}, sassRenameTask);
+		.pipe(gulp.dest('dist')),
+	sassRenameTask
+);
 
 const jsBuildTask = gulp.series(
 	() => del(['dist/js']),
-	() => {
-	return gulp.src('./src/**/*.ts')
+	() => gulp.src('./src/**/*.ts')
 		.pipe(plumber())
-		.pipe(sourcemaps.init())
 		.pipe(tsProject()).js
-		.pipe(sourcemaps.write())
-		.pipe(gulp.dest('dist'))
-	;
-}, () => {
-	return gulp.src('./dist/**/*.js')
+		.pipe(gulp.dest('dist')),
+	() => gulp.src('./dist/**/*.js')
 		.pipe(plumber())
 		.pipe(webpack({
 			output: { filename: 'main.js' },
 			devtool: 'source-map',
 			mode: 'development'
 		}))
-    .pipe(gulp.dest('dist/js'))
-	;
-}, () => del(['dist/ts']));
+    .pipe(gulp.dest('dist/js')),
+	() => del(['dist/ts'])
+);
 const jsBuildProdTask = gulp.series(
 	() => del(['dist/js']),
-	() => {
-	return gulp.src('./src/**/*.ts')
+	() => gulp.src('./src/**/*.ts')
 		.pipe(plumber())
 		.pipe(tsProject()).js
-		.pipe(gulp.dest('dist'))
-	;
-}, () => {
-	return gulp.src('./dist/**/*.js')
+		.pipe(gulp.dest('dist')),
+	() => gulp.src('./dist/**/*.js')
 		.pipe(plumber())
 		.pipe(webpack({
 			output: { filename: 'main.js' },
 			mode: 'production'
 		}))
-    .pipe(gulp.dest('dist/js'))
-	;
-}, () => del(['dist/ts']));
+    .pipe(gulp.dest('dist/js')),
+	() => del(['dist/ts'])
+);
 
 const imageTask = () => {
-	return gulp.src('src/images/*')
+	return gulp.src('src/images/**/*.*')
 		.pipe(imagemin())
 		.pipe(gulp.dest('dist/images'))
 	;
 }
 
-const htmlBuildTask = gulp.series(() => {
-	return gulp.src('./src/**/*.html')
-		.pipe(gulp.dest('./dist'))
-	;
-}, () => {
-	return gulp.src('./dist/**/*.html')
+const htmlBuildTask = gulp.series(
+	() => gulp.src('./src/**/*.html')
+		.pipe(gulp.dest('./dist')),
+	() => gulp.src('./dist/**/*.html')
 		.pipe(inject(gulp.src(['./dist/**/*.js', './dist/**/*.css'], { read: false }), { relative: true }))
 		.pipe(gulp.dest('./dist'))
-	;
-});
+);
 
 const buildTask = gulp.series(cleanTask, sassBuildTask, jsBuildTask, htmlBuildTask, imageTask);
 const buildProdTask = gulp.series(cleanTask, sassBuildProdTask, jsBuildProdTask, htmlBuildTask, imageTask);

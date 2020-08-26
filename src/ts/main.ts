@@ -1,4 +1,4 @@
-import { AppClass } from './app.class';
+import { AppClass } from './classes/app.class';
 import { fromEvent } from 'rxjs';
 
 const app = new AppClass(13, 58);

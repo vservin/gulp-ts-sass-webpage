@@ -2,6 +2,10 @@
 @import './node_modules/bulma/bulma';
 $color: aliceblue;
 
+html {
+	overflow-y: auto;
+}
+
 body {
 	margin: 0;
 	padding: 0;
