@@ -1,9 +1,11 @@
 @import 'spacing';
 @import './node_modules/bulma/bulma';
-$color: aliceblue;
+@import "mixins";
+$color: $light;
 
 html {
-	overflow-y: auto;
+	overflow-y: overlay;
+	@include custom-scrollbars(0.25rem, $primary, transparent);
 }
 
 body {

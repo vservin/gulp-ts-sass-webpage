@@ -1,15 +1,9 @@
 import { AppClass } from './classes/app.class';
-import { fromEvent } from 'rxjs';
 
-const app = new AppClass(13, 58);
-console.log(`The current time is: ${ app.getCurrentTime().toLocaleString() }`);
-console.log(`The current time (formatted) is: ${ app.getCurrentTime(true) }`);
-console.log(`The time set is: ${ app.getTime().toLocaleString() }`);
-console.log(`The time set (formatted) is: ${ app.getTime(true) }`);
+const app = new AppClass();
+console.log(`%cTypeScript examples!`, 'color: #00D1B2; font-size: 18pt;');
+console.log(`The current time is:`, app.clock.getCurrentTime().toLocaleString());
+console.log(`The current time (formatted) is: ${ app.clock.getCurrentTime(true) }`);
+console.log(`The time set is: ${ app.clock.getTime().toLocaleString() }`);
+console.log(`The time set (formatted) is: ${ app.clock.getTime(true) }`);
 
-
-const button = document.querySelector('#myButton');
-
-fromEvent(button, 'click').subscribe((event) => {
-  console.log('The button was clicked!', event);
-});

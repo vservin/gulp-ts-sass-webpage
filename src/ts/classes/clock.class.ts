@@ -1,4 +1,4 @@
-import { ClockInterface, LocalDateOptions } from '../interfaces/time.interfaces';
+import { ActualTime, ClockInterface, LocalDateOptions } from '../interfaces/time.interfaces';
 
 export class Clock implements ClockInterface, LocalDateOptions {
   private _currentTime: Date = new Date();
@@ -18,4 +18,19 @@ export class Clock implements ClockInterface, LocalDateOptions {
     }
     return this._currentTime;
   }
+}
+
+export class AppClock extends Clock implements ActualTime {
+
+  constructor(h: number, m: number) {
+    super(h, m);
+  }
+
+  getCurrentTime(formatted = false): Date | string {
+    if (formatted) {
+      return (new Date()).toLocaleDateString('en-UK', this.localeDateOptionsFormat);
+    }
+    return new Date();
+  }
+
 }

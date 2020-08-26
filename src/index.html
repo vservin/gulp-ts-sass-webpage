@@ -6,12 +6,12 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-		<title>My first gulp project</title>
+		<title>Frameworkless Gulp - TS - Sass Website</title>
 		<!-- inject:css -->
   	<!-- endinject -->
 	</head>
 	<body>
-		<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+		<nav class="navbar is-dark pr-1" role="navigation" aria-label="main navigation">
   		<div class="navbar-brand">
 				<a class="navbar-item" href="https://bulma.io" target="_blank">
 					<img src="https://bulma.io/images/bulma-logo-white.png" alt="Bulma" width="112" height="28">
@@ -24,38 +24,22 @@
 			</div>
 			<div class="navbar-menu">
 				<div class="navbar-start">
-					<a class="navbar-item" href="https://bulma.io/" target="_blank">
-						Home
-					</a>
+					<a class="navbar-item" href="#home">Home</a>
 				</div>
 				<div class="navbar-end">
 					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link" href="https://bulma.io/documentation/overview/start/" target="_blank">
-							Docs
-						</a>
+						<a class="navbar-link" href="https://bulma.io/documentation/overview/start/" target="_blank">Bulma docs</a>
 						<div class="navbar-dropdown is-boxed is-right">
-							<a class="navbar-item" href="https://bulma.io/documentation/overview/start/" target="_blank">
-								Overview
-							</a>
-							<a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/" target="_blank">
-								Modifiers
-							</a>
-							<a class="navbar-item" href="https://bulma.io/documentation/columns/basics/" target="_blank">
-								Columns
-							</a>
-							<a class="navbar-item" href="https://bulma.io/documentation/layout/container/" target="_blank">
-								Layout
-							</a>
-							<a class="navbar-item" href="https://bulma.io/documentation/form/general/" target="_blank">
-								Form
-							</a>
+							<a class="navbar-item is-active" href="https://bulma.io/" target="_blank">Home Page</a>
+							<a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/" target="_blank">Modifiers</a>
+							<a class="navbar-item" href="https://bulma.io/documentation/customize/concepts/" target="_blank">Customize</a>
+							<a class="navbar-item" href="https://bulma.io/documentation/helpers/" target="_blank">Helpers</a>
+							<a class="navbar-item" href="https://bulma.io/documentation/columns/basics/" target="_blank">Columns</a>
+							<a class="navbar-item" href="https://bulma.io/documentation/layout/container/" target="_blank">Layout</a>
+							<a class="navbar-item" href="https://bulma.io/documentation/form/general/" target="_blank">Form</a>
 							<hr class="navbar-divider">
-							<a class="navbar-item" href="https://bulma.io/documentation/elements/box/" target="_blank">
-								Elements
-							</a>
-							<a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/" target="_blank">
-								Components
-							</a>
+							<a class="navbar-item" href="https://bulma.io/documentation/elements/box/" target="_blank">Elements</a>
+							<a class="navbar-item" href="https://bulma.io/documentation/components/breadcrumb/" target="_blank">Components</a>
 						</div>
 					</div>
 					<a class="navbar-item" href="https://github.com/vservin" target="_blank">
@@ -64,10 +48,33 @@
 				</div>
 			</div>
 		</nav>
-		<main class="container">
-			<h1>Hello world</h1>
-			<button id="myButton" class="button is-primary is-outlined">Test me!</button>
-		</main>
+		<section class="hero is-large" id="home">
+			<div class="hero-body">
+    		<div class="container">
+					<div class="columns is-vcentered">
+						<div class="column is-8">
+							<p class="subtitle is-3 has-text-info-light">If you are into front-end development, and you started reading about TypeScript vs JavaScript, minification,
+								css preprocessor, task runner and bundling, but you don't want to mess with a big framework, <b>you came to the right place</b>.</p>
+						</div>
+						<div class="column is-3 has-text-centered">
+							<figure class="image">
+								<img src="images/illustrations/undraw_feeling_proud_qne1.svg" alt="Web development">
+							</figure>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="hero">
+			<div class="hero-body">
+				<div class="columns is-vcentered is-centered">
+					<div class="column is-10">
+						<h1 class="title">SASS</h1>
+						<p> A CSS preprocessor is a program that lets you generate CSS from the preprocessor's own unique syntax</p>
+					</div>
+				</div>
+			</div>
+		</section>
 		<!-- inject:js -->
   	<!-- endinject -->
 	</body>

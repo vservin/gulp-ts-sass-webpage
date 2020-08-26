@@ -108,9 +108,9 @@ const serveTask = gulp.series(buildTask, () => {
 		open: false
 	});
 	gulp.watch('src/**/*.scss', sassBuildTask);
-	gulp.watch('src/**/*.html', htmlBuildTask).on('change', browserSync.reload);
-	gulp.watch('src/**/*.ts', jsBuildTask, htmlBuildTask).on('change', browserSync.reload);
-	gulp.watch('src/images/**/*.*', imageTask).on('change', browserSync.reload);
+	gulp.watch('src/**/*.html').on('all', gulp.series( htmlBuildTask, browserSync.reload));
+	gulp.watch('src/**/*.ts').on('all', gulp.series(jsBuildTask, htmlBuildTask, browserSync.reload));
+	gulp.watch('src/images/**/*.*').on('all', gulp.series(imageTask, browserSync.reload));
 });
 
 exports.clean = cleanTask;
