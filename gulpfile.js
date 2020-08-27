@@ -98,7 +98,7 @@ const htmlBuildTask = gulp.series(
 
 const buildTask = gulp.series(cleanTask, sassBuildTask, jsBuildTask, htmlBuildTask, imageTask);
 const buildProdTask = gulp.series(cleanTask, sassBuildProdTask, jsBuildProdTask, htmlBuildTask, imageTask);
-const deployTask = () => gulp.src('./dist/**/*').pipe(ghPages());
+const deployTask = () => gulp.src('./dist/**/*').pipe(ghPages({ force: true }));
 
 const serveTask = gulp.series(buildTask, () => {
 	gulp.watch('src/**/*.scss', sassBuildTask);
