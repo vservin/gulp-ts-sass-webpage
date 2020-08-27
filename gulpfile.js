@@ -101,16 +101,16 @@ const buildProdTask = gulp.series(cleanTask, sassBuildProdTask, jsBuildProdTask,
 const deployTask = () => gulp.src('./dist/**/*').pipe(ghPages());
 
 const serveTask = gulp.series(buildTask, () => {
+	gulp.watch('src/**/*.scss', sassBuildTask);
+	gulp.watch('src/**/*.html').on('all', gulp.series(htmlBuildTask, browserSync.reload));
+	gulp.watch('src/**/*.ts').on('all', gulp.series(jsBuildTask, htmlBuildTask, browserSync.reload));
+	gulp.watch('src/images/**/*.*').on('all', gulp.series(imageTask, browserSync.reload));
 	browserSync.init({
 		server: {
 			baseDir: './dist'
 		},
 		open: false
 	});
-	gulp.watch('src/**/*.scss', sassBuildTask);
-	gulp.watch('src/**/*.html').on('all', gulp.series( htmlBuildTask, browserSync.reload));
-	gulp.watch('src/**/*.ts').on('all', gulp.series(jsBuildTask, htmlBuildTask, browserSync.reload));
-	gulp.watch('src/images/**/*.*').on('all', gulp.series(imageTask, browserSync.reload));
 });
 
 exports.clean = cleanTask;
