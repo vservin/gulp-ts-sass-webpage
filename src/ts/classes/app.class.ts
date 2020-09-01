@@ -6,4 +6,9 @@ export class AppClass {
     return this._clock;
   }
 
+  refreshClock() {
+    const element = document.querySelector('#clock-example');
+    element.innerHTML = this._clock.getCurrentTime(true) as string;
+  }
+
 }

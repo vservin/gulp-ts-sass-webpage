@@ -102,7 +102,7 @@ vs the TS output.
   a = new Array(); // error, outputs: "Type 'any[]' is not assignable to type 'number'."
 ```
 
-In summary:
+In summary:\
 ![TypeScript](https://www.filepicker.io/api/file/19uUx4kDS7ecP6YDadXg)
 
 For more complete info visit **[TypeScript](https://www.typescriptlang.org/)**

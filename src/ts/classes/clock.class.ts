@@ -14,7 +14,7 @@ export class Clock implements ClockInterface, LocalDateOptions {
 
   getTime(formatted = false): Date | string {
     if (formatted) {
-      return this._currentTime.toLocaleDateString('es-MX', this.localeDateOptionsFormat);
+      return this._currentTime.toLocaleDateString('en-UK', this.localeDateOptionsFormat);
     }
     return this._currentTime;
   }

@@ -7,7 +7,6 @@ const del = require('del');
 const autoprefixer = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
 const ts = require('gulp-typescript');
-const tsProject = ts.createProject('tsconfig.json');
 const fs = require('fs');
 const imagemin = require('gulp-imagemin');
 const inject = require('gulp-inject');
@@ -51,11 +50,14 @@ const sassBuildProdTask = gulp.series(
 
 const jsBuildTask = gulp.series(
 	() => del(['dist/js']),
-	() => gulp.src('./src/**/*.ts')
-		.pipe(plumber())
-		.pipe(tsProject()).js
-		.pipe(gulp.dest('dist')),
-	() => gulp.src('./dist/**/*.js')
+	() => {
+		const tsProject = ts.createProject('tsconfig.json');
+		return gulp.src('./src/**/*.ts')
+			.pipe(plumber())
+			.pipe(tsProject()).js
+			.pipe(gulp.dest('dist'))
+		;
+	}, () => gulp.src('./dist/**/*.js')
 		.pipe(plumber())
 		.pipe(webpack({
 			output: { filename: 'main.js' },
@@ -67,11 +69,14 @@ const jsBuildTask = gulp.series(
 );
 const jsBuildProdTask = gulp.series(
 	() => del(['dist/js']),
-	() => gulp.src('./src/**/*.ts')
-		.pipe(plumber())
-		.pipe(tsProject()).js
-		.pipe(gulp.dest('dist')),
-	() => gulp.src('./dist/**/*.js')
+	() => {
+		const tsProject = ts.createProject('tsconfig.json');
+		return gulp.src('./src/**/*.ts')
+			.pipe(plumber())
+			.pipe(tsProject()).js
+			.pipe(gulp.dest('dist'))
+		;
+	}, () => gulp.src('./dist/**/*.js')
 		.pipe(plumber())
 		.pipe(webpack({
 			output: { filename: 'main.js' },
