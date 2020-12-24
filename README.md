@@ -3,9 +3,9 @@
 <p align="center">
     <img src="https://img.shields.io/badge/author-vservin-blueviolet.svg">
     <img src="https://img.shields.io/github/package-json/v/vservin/gulp-ts-sass-webpage">
-    <img src="https://img.shields.io/github/package-json/dependency-version/vservin/gulp-ts-sass-webpage/dev/gulp/master">
+    <img src="https://img.shields.io/github/package-json/dependency-version/vservin/gulp-ts-sass-webpage/gulp/master">
     <img src="https://img.shields.io/github/package-json/dependency-version/vservin/gulp-ts-sass-webpage/dev/typescript/master">
-    <img src="https://img.shields.io/github/package-json/dependency-version/vservin/gulp-ts-sass-webpage/dev/node-sass/master">
+    <img src="https://img.shields.io/github/package-json/dependency-version/vservin/gulp-ts-sass-webpage/node-sass/master">
     <img src="https://img.shields.io/github/issues/vservin/gulp-ts-sass-webpage">
     <img src="https://img.shields.io/github/license/vservin/gulp-ts-sass-webpage">
 </p>
