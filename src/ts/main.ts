@@ -1,19 +1,18 @@
-import { AppClass } from './classes/app.class';
-import { navBarEvents } from './navbar';
 import { fromEvent, interval } from 'rxjs';
-import { concatMap, delay, filter, take, tap } from 'rxjs/operators';
-import { User } from './interfaces/user.interfaces';
 import { fromFetch } from 'rxjs/fetch';
+import { concatMap, delay, filter, tap } from 'rxjs/operators';
+import { AppClass } from './classes/app.class';
+import { User } from './interfaces/user.interfaces';
+import { navBarEvents } from './navbar';
 
 navBarEvents();
 
 const app = new AppClass();
-console.log(`%cTypeScript examples!`, 'color: #00D1B2; font-size: 18pt;');
-console.log(`The current time is:`, app.clock.getCurrentTime().toLocaleString());
+console.log('%cTypeScript examples!', 'color: #00D1B2; font-size: 18pt;');
+console.log(`The current time is: ${ app.clock.getCurrentTime().toLocaleString() }`);
 console.log(`The current time (formatted) is: ${ app.clock.getCurrentTime(true) }`);
 console.log(`The time set is: ${ app.clock.getTime().toLocaleString() }`);
 console.log(`The time set (formatted) is: ${ app.clock.getTime(true) }`);
-
 
 /* Live clock example */
 const milis = 1000;
@@ -33,7 +32,6 @@ if (clockControl) {
     clockControl.classList.remove('is-danger');
     clockControl.classList.add('is-success');
     clockControl.innerHTML = 'Resume clock';
-    return;
   });
 }
 
@@ -49,9 +47,7 @@ if (triggerBtn) {
       triggerBtn.classList.add('is-loading');
     }),
     delay(2000),
-    concatMap(() => {
-      return fromFetch<User[]>('https://jsonplaceholder.typicode.com/users', { selector: res => res.json() });
-    })
+    concatMap(() => fromFetch<User[]>('https://jsonplaceholder.typicode.com/users', { selector: res => res.json() }))
   ).subscribe((users) => {
     triggerBtn.classList.remove('is-loading');
     activeUsers = users;

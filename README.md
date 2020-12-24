@@ -2,7 +2,7 @@
 
 <p align="center">
     <img src="https://img.shields.io/badge/author-vservin-blueviolet.svg">
-    <img src="https://img.shields.io/npm/v/vue2-baremetrics-calendar">
+    <img src="https://img.shields.io/github/package-json/v/vservin/gulp-ts-sass-webpage">
     <img src="https://img.shields.io/github/package-json/dependency-version/vservin/gulp-ts-sass-webpage/dev/gulp/master">
     <img src="https://img.shields.io/github/package-json/dependency-version/vservin/gulp-ts-sass-webpage/dev/typescript/master">
     <img src="https://img.shields.io/github/package-json/dependency-version/vservin/gulp-ts-sass-webpage/dev/node-sass/master">
