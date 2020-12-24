@@ -3,7 +3,6 @@ import { create as bsCreate } from 'browser-sync';
 import * as del from 'del';
 import * as gulp from 'gulp';
 import * as autoprefixer from 'gulp-autoprefixer';
-import * as ghPages from 'gulp-gh-pages';
 import * as imagemin from 'gulp-imagemin';
 import * as inject from 'gulp-inject';
 import * as plumber from 'gulp-plumber';
@@ -15,6 +14,25 @@ import * as webpack from 'webpack-stream';
 
 const browserSync = bsCreate();
 (sass as any).compiler = nodeSass;
+
+const scriptFiles = ['./src/ts/main.ts', './src/ts/other-page.ts'];
+
+const getScriptEntries: () => { [key: string]: string[] } = () => {
+  const obj: { [key: string]: string[] } = {};
+  scriptFiles.filter(path => !!path).forEach((path) => {
+    const splitted = path.split('/');
+    const fileNameSplitter = splitted[splitted.length - 1].split('.');
+    let parsedPath = path;
+    if (parsedPath.startsWith('./src') || parsedPath.startsWith('src')) {
+      parsedPath = parsedPath.replace('src', 'dist');
+    }
+    if (fileNameSplitter[fileNameSplitter.length - 1] === 'ts') {
+      parsedPath = parsedPath.replace(fileNameSplitter.join('.'), `${ fileNameSplitter[0] }.js`);
+    }
+    obj[fileNameSplitter[0]] = [parsedPath];
+  });
+  return obj;
+};
 
 const cleanTask = () => del(['dist']);
 const cleanCss = () => del(['dist/css']);
@@ -61,7 +79,8 @@ const jsCompileTask = () => {
 const jsBundleTask = () => gulp.src('./dist/**/*.js')
   .pipe(plumber())
   .pipe(webpack({
-    output: { filename: 'main.js' },
+    entry: getScriptEntries(),
+    output: { filename: '[name].js' },
     devtool: 'source-map',
     mode: 'development'
   }))
@@ -69,7 +88,8 @@ const jsBundleTask = () => gulp.src('./dist/**/*.js')
 const jsBundleProdTask = () => gulp.src('./dist/**/*.js')
   .pipe(plumber())
   .pipe(webpack({
-    output: { filename: 'main.js' },
+    entry: getScriptEntries(),
+    output: { filename: '[name].js' },
     mode: 'production'
   }))
   .pipe(gulp.dest('dist/js'));
@@ -79,13 +99,16 @@ const jsBuildProdSeriesTask = gulp.series(cleanJs, jsCompileTask, jsBundleProdTa
 const htmlCopyTask = () => gulp.src('./src/**/*.html')
   .pipe(gulp.dest('./dist'));
 const htmlInjectDependenciesTask = () => gulp.src('./dist/**/*.html')
-  .pipe(inject(gulp.src(['./dist/**/*.js', './dist/**/*.css'], { read: false }), { relative: true }))
+  // .pipe(inject(gulp.src(['./dist/**/*.js', './dist/**/*.css'], { read: false }), { relative: true }))
+  .pipe(inject(gulp.src(['./dist/**/*.js', './dist/**/*.css'], { read: false }), {
+    starttag: '<!-- inject:{{path}} -->',
+    relative: true
+  }))
   .pipe(gulp.dest('./dist'));
 const htmlBuildTask = gulp.series(htmlCopyTask, htmlInjectDependenciesTask);
 
 const buildTask = gulp.series(cleanTask, sassBuildSeriesTask, jsBuildSeriesTask, htmlBuildTask, imageTask);
 const buildProdTask = gulp.series(cleanTask, sassBuildProdSeriesTask, jsBuildProdSeriesTask, htmlBuildTask, imageTask);
-const deployTask = () => gulp.src('./dist/**/*').pipe(ghPages({ force: true }));
 
 const watchFileChangesTask = () => {
   gulp.watch('src/**/*.scss', sassBuildSeriesTask);
@@ -108,6 +131,5 @@ exports.js = jsBuildSeriesTask;
 exports.html = htmlBuildTask;
 exports['build'] = buildTask;
 exports['build:prod'] = buildProdTask;
-exports.deploy = deployTask;
 exports.serve = serveTask;
 exports.default = serveTask;

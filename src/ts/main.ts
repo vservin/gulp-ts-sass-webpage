@@ -3,7 +3,7 @@ import { fromFetch } from 'rxjs/fetch';
 import { concatMap, delay, filter, tap } from 'rxjs/operators';
 import { AppClass } from './classes/app.class';
 import { User } from './interfaces/user.interfaces';
-import { navBarEvents } from './navbar';
+import { navBarEvents } from './helpers/navbar';
 
 navBarEvents();
 
