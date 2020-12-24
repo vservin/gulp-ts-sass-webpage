@@ -1,177 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-		<title>Frameworkless Gulp - TS - Sass Website</title>
-		<!-- inject:css -->
-  	<link rel="stylesheet" href="css/style.css">
-  	<!-- endinject -->
-	</head>
-	<body>
-		<nav class="navbar is-dark pr-1" role="navigation">
-  		<div class="navbar-brand">
-				<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-				</a>
-			</div>
-			<div class="navbar-menu" id="navbar">
-				<div class="navbar-start">
-					<a class="navbar-item" href="https://github.com/vservin" target="_blank">
-						<img id="git-image" src="images/github/github-logo-light.png" alt="GitHub">&nbsp;vservin
-					</a>
-				</div>
-				<div class="navbar-end">
-					<a class="navbar-item" href="https://www.typescriptlang.org/docs/handbook/intro.html" target="_blank">TypeScript Docs</a>
-					<a class="navbar-item" href="https://sass-lang.com/guide" target="_blank">Sass Docs</a>
-					<a class="navbar-item" href="https://gulpjs.com" target="_blank">Gulp Docs</a>
-					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link">Bulma docs</a>
-						<div class="navbar-dropdown is-boxed is-right">
-							<a class="navbar-item is-active" href="https://bulma.io/" target="_blank">Home Page</a>
-							<a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/" target="_blank">Modifiers</a>
-							<a class="navbar-item" href="https://bulma.io/documentation/customize/concepts/" target="_blank">Customize</a>
-							<a class="navbar-item" href="https://bulma.io/documentation/helpers/" target="_blank">Helpers</a>
-							<a class="navbar-item" href="https://bulma.io/documentation/columns/basics/" target="_blank">Columns</a>
-							<a class="navbar-item" href="https://bulma.io/documentation/layout/container/" target="_blank">Layout</a>
-							<a class="navbar-item" href="https://bulma.io/documentation/form/general/" target="_blank">Form</a>
-							<hr class="navbar-divider">
-							<a class="navbar-item" href="https://bulma.io/documentation/elements/box/" target="_blank">Elements</a>
-							<a class="navbar-item" href="https://bulma.io/documentation/components/breadcrumb/" target="_blank">Components</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
-		<section class="hero is-medium" id="home">
-			<div class="hero-body">
-    		<div class="container">
-					<div class="columns is-vcentered">
-						<div class="column is-8">
-							<p class="subtitle is-3 has-text-info-light">If you are into front-end development, and you started reading about TypeScript vs JavaScript, minification,
-								css preprocessor, task runner and bundling, but you don't want to mess with a big framework, <b>you came to the right place</b>.</p>
-						</div>
-						<div class="column is-3 has-text-centered">
-							<figure class="image">
-								<img src="images/illustrations/undraw_feeling_proud_qne1.svg" alt="Web development">
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="hero is-medium">
-			<div class="hero-body">
-    		<div class="container">
-					<div class="columns is-vcentered is-centered">
-						<div class="column is-3 has-text-centered">
-							<figure class="image">
-								<img src="images/illustrations/undraw_progressive_app_m9ms.svg" alt="Web development">
-							</figure>
-						</div>
-						<div class="column is-8">
-							<p class="subtitle is-4 has-text-info-light has-text-justified">
-								Here is presented a website, used as a base for your upcoming projects that need to be pure or frameworkless with the
-								scalable advantages that TS and Sass offer, so you can spend <span class="has-text-primary">less time configuring</span>
-								and <span class="has-text-primary">more time coding</span>.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="hero column is-10-tablet is-offset-1-tablet">
-			<div class="hero-body">
-				<div class="container">
-					<div class="columns is-vcentered">
-						<div class="column is-9">
-							<h1 class="title pt-0 has-text-light">Why Sass?</h1>
-							<p class="has-text-justified">
-								SASS is a CSS preprocessor, it lets you generate Css from Sass unique syntax allowing to
-								<span class="has-text-primary">make more with less code</span>, using variables, nesting, partials, mixins and much more!
-							</p>
-						</div>
-						<div class="column is-3 has-text-centered">
-							<figure class="image">
-								<img src="images/illustrations/undraw_button_style_70y7.svg" alt="Web development">
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="hero column is-10-tablet is-offset-1-tablet">
-			<div class="hero-body">
-				<div class="container">
-					<div class="columns is-vcentered">
-						<div class="column is-3 has-text-centered">
-							<figure class="image">
-								<img src="images/illustrations/undraw_code_thinking_1jeh.svg" alt="Web development">
-							</figure>
-						</div>
-						<div class="column is-9">
-							<h1 class="title pt-0 has-text-light">What about TypeScript?</h1>
-							<p class="has-text-justified">
-								TypeScript extends JavaScript by adding types. By understanding JavaScript, TypeScript saves you time catching errors and
-								providing fixes before you run code. Also, Typescript mixes the old with the new in the best way possibility. You can use
-								<span class="has-text-primary">newer features from ES6, and beyond</span>, and the compiler will convert them to ES5
-								(or whatever you specify). This allows you to make use of newer features that will be the future of Javascript,
-								without having to worry about compatibility. The finished code produced by the compiler will be backwards compatible with
-								ES5 <span class="has-text-primary">and will work just fine with older browsers</span>.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="hero column is-10-tablet is-offset-1-tablet">
-			<div class="hero-body">
-				<div class="container">
-					<div class="columns is-vcentered">
-						<div class="column is-9">
-							<h1 class="title pt-0 has-text-light">Ok, so what is Gulp?</h1>
-							<p class="has-text-justified">
-								Gulp is a task runner that provides <span class="has-text-primary">automation for repetitive workflows</span> and compose
-								them into efficient build pipelines, so we can have a confortable developing environment and automated tasks for deployment
-								in different environments.
-							</p>
-						</div>
-						<div class="column is-3 has-text-centered">
-							<figure class="image">
-								<img src="images/illustrations/undraw_in_progress_ql66.svg" alt="Web development">
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="container has-text-centered pb-4">
-			<h3 class="title is-3 has-text-light">Here are a few examples built with TypeScript and rxjs</h3>
-			<figure class="image column is-2 is-offset-5">
-				<img src="images/illustrations/undraw_celebration_0jvk.svg" alt="Web development">
-			</figure>
-			<p class="subtite is-3">Happy Coding!</p>
-			<hr>
-			<section class="container has-text-centered">
-				<p>According to your device, it's:</p>
-				<h4 class="title is-4 has-text-light" id="clock-example"></h4>
-				<div class="buttons is-centered">
-					<button id="clock-control" class="button is-danger">Freeze clock</button>
-				</div>
-			</section>
-			<hr>
-		</section>
-		<section class="container has-text-centered pb-8">
-			<button id="user-trigger" class="button is-info">Click me to retrieve users</button>
-			<pre class="has-text-left mt-4" id="users-container"></pre>
-		</section>
-		<!-- inject:js -->
-  	<script src="js/main.js"></script>
-  	<!-- endinject -->
-	</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <title>Frameworkless Gulp - TS - Sass Website</title>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- endinject -->
+  </head>
+  <body>
+    <nav class="navbar is-dark pr-1" role="navigation">
+      <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navbar">
+        <div class="navbar-start">
+          <a class="navbar-item" href="https://github.com/vservin" target="_blank">
+            <img id="git-image" src="images/github/github-logo-light.png" alt="GitHub">&nbsp;vservin
+          </a>
+        </div>
+        <div class="navbar-end">
+          <a class="navbar-item" href="https://www.typescriptlang.org/docs/handbook/intro.html" target="_blank">TypeScript Docs</a>
+          <a class="navbar-item" href="https://sass-lang.com/guide" target="_blank">Sass Docs</a>
+          <a class="navbar-item" href="https://gulpjs.com" target="_blank">Gulp Docs</a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Bulma docs</a>
+            <div class="navbar-dropdown is-boxed is-right">
+              <a class="navbar-item is-active" href="https://bulma.io/" target="_blank">Home Page</a>
+              <a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/" target="_blank">Modifiers</a>
+              <a class="navbar-item" href="https://bulma.io/documentation/customize/concepts/" target="_blank">Customize</a>
+              <a class="navbar-item" href="https://bulma.io/documentation/helpers/" target="_blank">Helpers</a>
+              <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/" target="_blank">Columns</a>
+              <a class="navbar-item" href="https://bulma.io/documentation/layout/container/" target="_blank">Layout</a>
+              <a class="navbar-item" href="https://bulma.io/documentation/form/general/" target="_blank">Form</a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="https://bulma.io/documentation/elements/box/" target="_blank">Elements</a>
+              <a class="navbar-item" href="https://bulma.io/documentation/components/breadcrumb/" target="_blank">Components</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="hero is-medium" id="home">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-8">
+              <p class="subtitle is-3 has-text-info-light">If you are into front-end development, and you started reading about TypeScript
+                vs JavaScript, minification, css preprocessors, task runner and bundling, but you don't want to mess with a big framework,
+                <b>you came to the right place</b>.
+              </p>
+            </div>
+            <div class="column is-3 has-text-centered">
+              <figure class="image">
+                <img src="images/illustrations/undraw_feeling_proud_qne1.svg" alt="Web development">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="hero is-medium">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered is-centered">
+            <div class="column is-3 has-text-centered">
+              <figure class="image">
+                <img src="images/illustrations/undraw_progressive_app_m9ms.svg" alt="Web development">
+              </figure>
+            </div>
+            <div class="column is-8">
+              <p class="subtitle is-4 has-text-info-light has-text-justified">
+                Here is presented a website, used as a base for your upcoming projects that need to be pure or frameworkless with the
+                scalable advantages that TS and Sass offer, so you can spend <span class="has-text-primary">less time configuring</span>
+                and <span class="has-text-primary">more time coding</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="hero column is-10-tablet is-offset-1-tablet">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-9">
+              <h1 class="title pt-0 has-text-light">Why Sass?</h1>
+              <p class="has-text-justified">
+                SASS is a CSS preprocessor, it lets you generate Css from Sass unique syntax allowing to
+                <span class="has-text-primary">make more with less code</span>, using variables, nesting, partials, mixins and much more!
+              </p>
+            </div>
+            <div class="column is-3 has-text-centered">
+              <figure class="image">
+                <img src="images/illustrations/undraw_button_style_70y7.svg" alt="Web development">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="hero column is-10-tablet is-offset-1-tablet">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-3 has-text-centered">
+              <figure class="image">
+                <img src="images/illustrations/undraw_code_thinking_1jeh.svg" alt="Web development">
+              </figure>
+            </div>
+            <div class="column is-9">
+              <h1 class="title pt-0 has-text-light">What about TypeScript?</h1>
+              <p class="has-text-justified">
+                TypeScript extends JavaScript by adding types. By understanding JavaScript, TypeScript saves you time catching errors and
+                providing fixes before you run code. Also, Typescript mixes the old with the new in the best way possibility. You can use
+                <span class="has-text-primary">newer features from ES6, and beyond</span>, and the compiler will convert them to ES5
+                (or whatever you specify). This allows you to make use of newer features that will be the future of Javascript,
+                without having to worry about compatibility. The finished code produced by the compiler will be backwards compatible with
+                ES5 <span class="has-text-primary">and will work just fine with older browsers</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="hero column is-10-tablet is-offset-1-tablet">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-9">
+              <h1 class="title pt-0 has-text-light">Ok, so what is Gulp?</h1>
+              <p class="has-text-justified">
+                Gulp is a task runner that provides <span class="has-text-primary">automation for repetitive workflows</span> and compose
+                them into efficient build pipelines, so we can have a confortable developing environment and automated tasks for deployment
+                in different environments.
+              </p>
+            </div>
+            <div class="column is-3 has-text-centered">
+              <figure class="image">
+                <img src="images/illustrations/undraw_in_progress_ql66.svg" alt="Web development">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container has-text-centered pb-4">
+      <h3 class="title is-3 has-text-light">Here are a few examples built with TypeScript and rxjs</h3>
+      <figure class="image column is-2 is-offset-5">
+        <img src="images/illustrations/undraw_celebration_0jvk.svg" alt="Web development">
+      </figure>
+      <p class="subtite is-3">Happy Coding!</p>
+      <hr>
+      <section class="container has-text-centered">
+        <p>According to your device, it's:</p>
+        <h4 class="title is-4 has-text-light" id="clock-example"></h4>
+        <div class="buttons is-centered">
+          <button id="clock-control" class="button is-danger">Freeze clock</button>
+        </div>
+      </section>
+      <hr>
+    </section>
+    <section class="container has-text-centered pb-8">
+      <button id="user-trigger" class="button is-info">Click me to retrieve users</button>
+      <pre class="has-text-left mt-4" id="users-container"></pre>
+    </section>
+    <!-- inject:js -->
+    <script src="js/main.js"></script>
+    <!-- endinject -->
+  </body>
 </html>
