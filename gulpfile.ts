@@ -3,6 +3,7 @@ import { create as bsCreate } from 'browser-sync';
 import * as del from 'del';
 import * as gulp from 'gulp';
 import * as autoprefixer from 'gulp-autoprefixer';
+import * as ghPages from 'gulp-gh-pages';
 import * as imagemin from 'gulp-imagemin';
 import * as inject from 'gulp-inject';
 import * as plumber from 'gulp-plumber';
@@ -109,6 +110,7 @@ const htmlBuildTask = gulp.series(htmlCopyTask, htmlInjectDependenciesTask);
 
 const buildTask = gulp.series(cleanTask, sassBuildSeriesTask, jsBuildSeriesTask, htmlBuildTask, imageTask);
 const buildProdTask = gulp.series(cleanTask, sassBuildProdSeriesTask, jsBuildProdSeriesTask, htmlBuildTask, imageTask);
+const deployTask = () => gulp.src('./dist/**/*').pipe(ghPages({ force: true }));
 
 const watchFileChangesTask = () => {
   gulp.watch('src/**/*.scss', sassBuildSeriesTask);
@@ -131,5 +133,6 @@ exports.js = jsBuildSeriesTask;
 exports.html = htmlBuildTask;
 exports['build'] = buildTask;
 exports['build:prod'] = buildProdTask;
+exports.deploy = deployTask;
 exports.serve = serveTask;
 exports.default = serveTask;
