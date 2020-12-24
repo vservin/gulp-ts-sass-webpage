@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "serve": "gulp serve",
     "build": "gulp build",
     "build:prod": "gulp build:prod"
@@ -50,6 +51,9 @@
     "rxjs": "^6.6.2",
     "ts-node": "^9.1.1",
     "webpack-stream": "^6.1.1"
+  },
+  "resolutions": {
+    "gift": "^0.10.2"
   },
   "browserslist": [
     "last 2 version",
